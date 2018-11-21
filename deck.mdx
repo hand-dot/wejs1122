@@ -1,0 +1,137 @@
+export { default as theme } from './theme'
+
+## Higher-Order Function ~関数型に憧れて~  
+  
+福田京平@hand-dot  
+`We Are JavaScripters! @26th`
+
+---
+# About Me
+
+---
+![Github mascot Octcat](https://avatars0.githubusercontent.com/u/24843808?s=460&v=4)
+* github: hand-dot
+* RN, react
+* handsontable (https://hand-dot.github.io/, https://labelmake.jp/)
+* 1993年に広島で生まれ、~略~ 最近関数型に憧れを持ち始める
+
+---
+## 「なぜ」関数型プログラミングを学ぶべきか  
+* コードのバグが少なくなる
+* コードが理解しやすくなる
+* 短い時間で書ける
+* コードが再利用できる
+  etc...
+
+---
+関数型プログラミングで重要な概念の1つである  
+`Higher-Order Function`
+
+---
+JavaScriptやどの関数型言語においても  
+関数は「値」なんだ  
+
+---
+```js
+function double (num){ 
+    return num * 2; 
+} 
+```
+これはどんな言語でもできる
+
+---
+```js
+const double = function(num){
+    return num * 2;
+}
+```
+これはすべての言語でできるわけじゃない  
+<small>無名関数を作って変数に代入</small>
+
+---
+しかも、別の関数に渡すこともできる。  
+これが`Higher-Order Function`
+
+---
+これを使えば関数を合成(Composition)できる  
+# Let's Try!
+
+---
+```js
+var sazaeCharacters = [
+{name:'フグ田サザエ', age: 24},
+{name:'磯野波平', age: 54},
+{name:'磯野フネ', age: 28},
+{name:'フグ田マスオ', age: 24},
+{name:'磯野カツオ', age: 11},
+{name:'磯野ワカメ', age: 9},
+{name:'フグ田タラオ', age: 3},
+{name:'波野ノリスケ', age: 26},
+{name:'波野タイコ', age: 22},
+{name:'波野イクラ', age: 1},
+{name:'伊佐坂難物', age: 60},
+{name:'伊佐坂お軽', age: 50},
+{name:'伊佐坂甚六', age: 22},
+{name:'伊佐坂浮江', age: 17},
+{name:'中島くん', age: 11},
+{name:'かおりちゃん', age: 11},
+{name:'早川さん', age: 11},
+{name:'花沢さん', age: 11},
+{name:'橋本くん', age: 11},
+{name:'西原くん', age: 11},
+{name:'堀川くん', age: 11},
+{name:'西原くん', age: 11},
+{name:'穴子さん', age: 27},
+{name:'サブちゃん', age: 19},
+{name:'リカ', age: 5},
+];
+```
+
+---
+![sazaeCharacters](http://iso-labo.com/labo/images/sazae-san/how_old_list.png.pagespeed.ce.5YJIPOAFcI.png)  
+<small>なんとなく10歳未満の [磯野ワカメ, フグ田タラオ, 波野イクラ, リカ] を取得していきたいと思います。</small>
+---
+普通のforループを使って取得する例
+
+```js
+let underTen = [];
+for(let i = 0; i < sazaeCharacters.length; i++){
+    if(sazaeCharacters[i].age < 10){
+        underTen.push(sazaeCharacters[i]);
+    }
+}
+```
+6行, 122文字
+
+---
+`Array.prototype.filter()`を使って取得する例
+```js
+const isUnderTen = user => user.age < 10;
+const underTen = sazaeCharacters.filter(isUnderTen);
+```
+2行, 83文字  
+見た目だけではなく、ロジックが減っている。  
+<small>新しい配列を作って代入する処理を書いていない。</small>
+
+---
+すごく単純な例だけど、この処理には  
+
+* 10歳未満かどうかを決定するという処理  
+* 配列を作ってオブジェクトを入れていくという処理  
+
+が含まれていて  
+`isUnderTen`と`filter`という2つの単純な関数で別々に考えられた
+<small>forループの例みたいに2つの問題がごちゃ混ぜになっているときより理解しやすいし、再利用しやすい。</small>  
+
+---
+
+* 小さい関数を複数合成して、大きい関数を作ると問題を分けて考えられる。
+* 画面を作っている時も、コンポーネントを小さく作っていけば関数を合成するみたいにできる。
+
+## やっぱJavascript好きだわー
+
+---
+
+ここからシェアフルの話を少し
+
+---

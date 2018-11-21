@@ -1,0 +1,14 @@
+{
+  "name": "wejs1122",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx"
+  },
+  "author": "hand-dot <kyouhei.fukuda0729@gmail.com> (https://github.com/hand-dot)",
+  "license": "ISC",
+  "devDependencies": {
+    "mdx-deck": "^1.7.14"
+  }
+}
